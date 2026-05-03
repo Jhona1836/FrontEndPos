@@ -11,7 +11,9 @@ export default function Products() {
     const cargarProductos = async () => {
         productosApi.obtenerTodos()
             .then(res => {
-                setProductos(res.data.datos)
+                const producto = res.data.datos.filter(p => p.activo === true)
+                console.log("Productos", producto)
+                setProductos(producto)
             })
             .catch(err => {
                 setError('No se pudieron cargar los productos')
