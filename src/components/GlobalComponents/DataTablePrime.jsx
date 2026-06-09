@@ -95,9 +95,10 @@ export default function DataTablePrime({ data, columns, title }) {
     const dataFiltrada = data.filter(item => {
         const nombre = item.nombre ? item.nombre.toLowerCase() : ''
         const codigo = item.codigoBarras ? item.codigoBarras.toLowerCase() : ''
+        const sku = item.sku ? item.sku.toLowerCase() : ''
         const busca = busqueda.toLowerCase()
         
-        return nombre.includes(busca) || codigo.includes(busca)
+        return nombre.includes(busca) || codigo.includes(busca) || sku.includes(busca)
     })
 
 

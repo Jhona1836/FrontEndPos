@@ -8,6 +8,7 @@ import { setLoadingHandlers } from './api/axios'
 import LoadingOverlay from './components/LoadingOverlay'
 import MainLayout from './layouts/MainLayout'
 import Products from './pages/Products'
+import Venta from './pages/Venta'
 
 function AxiosLoader() {
     const { show, hide } = useLoading()
@@ -55,6 +56,7 @@ function AppContent() {
                 }>
                     <Route path="/home" element={<Dashboard />} />                                        
                     <Route path="/products" element={<Products/>} />
+                    <Route path="/sales" element={<Venta/>}   />
 
                 </Route>
 
