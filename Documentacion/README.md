@@ -26,7 +26,7 @@
 
 ### 1. Inicio de Sesión (`/login`)
 
-![Login](Captura%20de%20pantalla%202026-06-08%20201712.png)
+![Login](Documentacion/Captura%20de%20pantalla%202026-06-08%20201712.png)
 
 Formulario de autenticación con correo electrónico y contraseña.  
 Consume `POST /api/login` del backend Laravel y almacena el token JWT en `localStorage`.
@@ -35,31 +35,49 @@ Consume `POST /api/login` del backend Laravel y almacena el token JWT en `localS
 
 ### 2. Dashboard (`/home`)
 
-![Dashboard — KPIs](Captura%20de%20pantalla%202026-06-08%20201655.png)
-![Dashboard — Gráficas](Captura%20de%20pantalla%202026-06-08%20201726.png)
+![Dashboard — KPIs](Documentacion/Captura%20de%20pantalla%202026-06-08%20201655.png)
 
-Panel principal con:
+Panel principal con tarjetas de métricas clave:
 
-- **KPIs:** Venta Diaria, Ventas Semanales, Ventas Mensuales y Ticket Promedio.
-- **Gráfica de Ventas Semanales:** Barras por día con datos de los últimos 7 días.
-- **Gráfica de Ventas Mensuales:** Línea comparativa por semana del mes actual.
-- **Productos Más Vendidos:** Barras horizontales con el top de productos.
-- **Ventas por Método de Pago:** Sección en desarrollo.
+- **Venta Diaria** — Monto acumulado del día.
+- **Ventas Semanales** — Total de la semana en curso.
+- **Ventas Mensuales** — Acumulado del mes.
+- **Ticket Promedio** — Gasto promedio por compra.
 
-Endpoints consumidos: `GET /api/dashboard` y `GET /api/dashboard/ventas-mensual-semanas`.
+Cada KPI incluye un icono distintivo y fondo de color para identificar visualmente la métrica.
+
+---
+
+![Dashboard — Gráficas](Documentacion/Captura%20de%20pantalla%202026-06-08%20201726.png)
+
+Dos gráficas principales:
+
+- **Ventas Semanales** — Gráfica de barras con los montos por día (últimos 7 días).
+- **Ventas Mensuales** — Línea comparativa por semana del mes actual, con tooltips interactivos.
+
+---
+
+![Dashboard — Productos y Pagos](Documentacion/Captura%20de%20pantalla%202026-06-08%20205732.png)
+
+Sección inferior del dashboard:
+
+- **Productos Más Vendidos** — Barras horizontales con el top de productos por cantidad vendida.
+- **Ventas por Método de Pago** — Sección en desarrollo (placeholder).
+
+Endpoints: `GET /api/dashboard` y `GET /api/dashboard/ventas-mensual-semanas`.
 
 ---
 
 ### 3. Productos (`/products`)
 
-![Productos](Captura%20de%20pantalla%202026-06-08%20201712.png)
+![Productos](Documentacion/image.png)
 
 Catálogo de productos con tabla interactiva que incluye:
 
 - SKU, código de barras, nombre, precio de venta, stock y categoría.
 - Barra de búsqueda para filtrar en tiempo real.
 - Acciones por fila: editar y eliminar producto.
-- Botón para agregar nuevo producto.
+- Botón flotante para agregar nuevo producto.
 - Paginación incluida.
 
 Endpoints: CRUD completo contra `GET /api/productos`.
@@ -68,17 +86,17 @@ Endpoints: CRUD completo contra `GET /api/productos`.
 
 ### 4. Ventas (`/sales`)
 
-![Ventas](Captura%20de%20pantalla%202026-06-08%20201726.png)
+![Ventas](Documentacion/Captura%20de%20pantalla%202026-06-08%20201726.png)
 
 Módulo de generación de ventas con:
 
-- **Panel de Productos:** Tabla con todos los productos disponibles y botón "Agregar".
-- **Panel de Ticket:** Lateral con resumen de productos agregados, cantidades editables y total.
-- **Generación de Venta:** Modal para ingresar el monto recibido y confirmar la compra.
-- **Contador de productos** en el header del ticket.
+- **Panel de Productos** — Tabla con todos los productos disponibles y botón "Agregar".
+- **Panel de Ticket** — Lateral con resumen de productos agregados, cantidades editables y total.
+- **Generación de Venta** — Modal para ingresar el monto recibido y confirmar la compra.
+- Contador de productos en el header del ticket.
 - Estado vacío con icono cuando no hay productos seleccionados.
 
-Endpoints: `POST /api/ventas` para registrar la venta con sus items.
+Endpoint: `POST /api/ventas` para registrar la venta con sus items.
 
 ---
 
