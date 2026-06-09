@@ -26,7 +26,7 @@
 
 ### 1. Inicio de Sesión (`/login`)
 
-![Productos](Documentacion/image.png)
+![Productos](Documentacion/login.png)
 
 Formulario de autenticación con correo electrónico y contraseña.  
 Consume `POST /api/login` del backend Laravel y almacena el token JWT en `localStorage`.
@@ -35,7 +35,7 @@ Consume `POST /api/login` del backend Laravel y almacena el token JWT en `localS
 
 ### 2. Dashboard (`/home`)
 
-![Dashboard — KPIs](Documentacion/Captura%20de%20pantalla%202026-06-08%20201655.png)
+![Dashboard — KPIs](Documentacion/Dashboard.png)
 
 Panel principal con tarjetas de métricas clave:
 
@@ -61,7 +61,7 @@ Endpoints: `GET /api/dashboard` y `GET /api/dashboard/ventas-mensual-semanas`.
 
 ### 3. Productos (`/products`)
 
-![Productos](Documentacion/image.png)
+![Productos](Documentacion/Productos.png)
 
 Catálogo de productos con tabla interactiva que incluye:
 
@@ -77,7 +77,7 @@ Endpoints: CRUD completo contra `GET /api/productos`.
 
 ### 4. Ventas (`/sales`)
 
-![Ventas](Documentacion/Captura%20de%20pantalla%202026-06-08%20201726.png)
+![Ventas](Documentacion/Venta.png)
 
 Módulo de generación de ventas con:
 
