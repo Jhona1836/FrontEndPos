@@ -26,7 +26,7 @@
 
 ### 1. Inicio de Sesión (`/login`)
 
-![Login](Documentacion/Captura%20de%20pantalla%202026-06-08%20201712.png)
+![Productos](Documentacion/image.png)
 
 Formulario de autenticación con correo electrónico y contraseña.  
 Consume `POST /api/login` del backend Laravel y almacena el token JWT en `localStorage`.
