@@ -80,7 +80,7 @@ const paginationComponentOptions = {
     selectAllRowsItemText: 'Todos',
 };
 
-export default function DataTablePrime({ data, columns, title }) {
+export default function DataTablePrime({ data, columns, title, defaultSortFieldId, defaultSortAsc }) {
     const [busqueda, setBusqueda] = useState('')
 
     const columnsConResponsive = columns.map(col => ({
@@ -117,6 +117,8 @@ export default function DataTablePrime({ data, columns, title }) {
                 title={title}
                 columns={columnsConResponsive}
                 data={dataFiltrada}
+                defaultSortFieldId={defaultSortFieldId}
+                defaultSortAsc={defaultSortAsc}
                 customStyles={tableCustomStyles}
                 pagination
                 paginationComponentOptions={paginationComponentOptions}
