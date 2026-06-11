@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react"
-import productosApi from "../api/productosApi"
-import DataTablePrime from "../components/GlobalComponents/DataTablePrime"
-import AddProducto from "../components/Products/AddProduct"
-import DeleteProduct from "../components/Products/DeleteProduct"
+import productosApi from "../../api/productosApi"
+import DataTablePrime from "../GlobalComponents/DataTablePrime"
+import WarningFilled from "@ant-design/icons/WarningOutlined"
 
-export default function Products() {
+export default function TableInventory({ limit }) {
     const [productos, setProductos] = useState([])
     const [error, setError] = useState('')
 
@@ -24,11 +23,15 @@ export default function Products() {
         cargarProductos()
     }, [])
 
+    const productosMostrados = limit
+        ? [...productos].sort((a, b) => a.stock - b.stock).slice(0, limit)
+        : productos
 
     const columns = [
         {
             name: 'Sku',
-            selector: row => row.sku
+            selector: row => row.sku,
+            sortable: true,
         },
         {
             name: 'Codigo de Barras',
@@ -36,22 +39,30 @@ export default function Products() {
         },
         {
             name: 'Nombre del Producto',
-            selector: row => row.nombre
+            selector: row => row.nombre,
+            sortable: true,
         },
         {
             name: 'Precio de Venta',
-            selector: row => row.precioVenta
+            selector: row => row.precioVenta,
+            sortable: true,
         },
         {
             name: 'Stock',
+            selector: row => row.stock,
+            sortable: true,
+            id: 'stock',
+        },
+        {
+            name: 'Advertencia',
             selector: row => {
                 if (row.stock < 10) {
-                    return <span className="text-red-500 font-bold">{row.stock}</span>
+                    return <WarningFilled style={{ color: 'red', fontSize: 20 }} />
                 } if (row.stock >= 10 && row.stock < 21) {
-                    return <span className="text-orange-500 font-bold">{row.stock}</span>
+                    return <WarningFilled style={{ color: 'orange', fontSize: 20 }} />
                 }
-                else{
-                    return <span className="text-green-500 font-bold">{row.stock}</span>
+                else {
+                    return <WarningFilled style={{ color: 'green', fontSize: 20 }} />
                 }
             }
 
@@ -61,20 +72,6 @@ export default function Products() {
         {
             name: 'Categoria',
             selector: row => row.categoria?.nombre
-        }, {
-            name: "Acciones",
-            cell: (row) => (
-                <div className="flex gap-2">
-                    <AddProducto
-                        producto={row}
-                        onProductoGuardado={cargarProductos}
-                    />
-                    <DeleteProduct
-                        id={row.id}
-                        onDelete={cargarProductos}
-                    />
-                </div>
-            )
         }
 
     ]
@@ -82,13 +79,13 @@ export default function Products() {
 
     return (
         <div>
-            <div className="flex justify-end mb-4 ">
-                <AddProducto />
-            </div>
+
             <DataTablePrime
                 title='Productos'
                 columns={columns}
-                data={productos}
+                data={productosMostrados}
+                defaultSortFieldId='stock'
+                defaultSortAsc={true}
             />
 
         </div>

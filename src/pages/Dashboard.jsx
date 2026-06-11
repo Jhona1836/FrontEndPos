@@ -4,6 +4,7 @@ import dashboardApi from '../api/dashboardApi'
 import { BarChart, CartesianGrid, YAxis, XAxis, Bar, ResponsiveContainer, LineChart, Line, Legend, Tooltip } from 'recharts'
 import Icon from '@mdi/react'
 import { mdiCurrencyUsd, mdiCalendarWeek, mdiCalendarMonth, mdiTrendingUp } from '@mdi/js'
+import TableInventory from '../components/Inventory/TableInventory'
 
 export default function Dashboard() {
     const [datos, setDatos] = useState(null)
@@ -170,6 +171,12 @@ export default function Dashboard() {
                     <h3 className="text-base font-semibold text-gray-900 mb-1">Ventas por Método de Pago</h3>
                     <p className="text-sm text-gray-500">Próximamente</p>
                 </div>
+            </div>
+
+
+            <div className='bg-white rounded-xl shadow-sm border border-gray-200 p-6 '>
+                <h3 className="text-base font-semibold text-gray-900 mb-1">Produtos Faltantes</h3>
+                <TableInventory limit={3} />
             </div>
         </div>
     )
